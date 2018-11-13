@@ -12,4 +12,5 @@ package cars.Model;
 public class Car 
 {
     String modelo;
+    String ano;
 }
