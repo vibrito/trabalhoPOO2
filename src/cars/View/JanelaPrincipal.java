@@ -21,7 +21,7 @@ public class JanelaPrincipal extends JFrame{
     private JLabel logo;
     public JButton botaoBusca;
     private JTextField caixaBusca;
-    public JList listaCarros;
+    private JList listaCarros;
     public JButton adicionarCarro;
     public JButton removerCarro;
     public ButtonGroup escolhaOrdem;
@@ -58,18 +58,7 @@ public class JanelaPrincipal extends JFrame{
         caixaBusca.setFont(new java.awt.Font("Tahoma", 0, 18)); //Editando a fonte caixa de texto
         caixaBusca.setText("Campo de busca");   //Definindo um texto padrão para a caixa de texto
         caixaBusca.setBounds(460, 50, 290, 40); //Definindo a posição e o tamanho da caixa de texto
-        
-        listaCarros = new JList();  //Criando uma lista
-        DefaultListModel listModel = new DefaultListModel();
-        listModel.addElement("Fusca");
-        listModel.addElement("Kombi");
-        listModel.addElement("Brasilia");
-        listaCarros = new JList(listModel);
-        janela.add(listaCarros);    //Adicionando a lista no painel
-        listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
-        listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez
-        listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
-        
+                
         adicionarCarro = new JButton(); //Criando o botão adicionar carro
         janela.add(adicionarCarro); //Adicionando o botão no painel
         adicionarCarro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cars/View/img/plus_47697.png")));    //Setando e inserindo uma imagem para o botão
@@ -86,6 +75,7 @@ public class JanelaPrincipal extends JFrame{
         escolhaOrdem = new ButtonGroup();   //Criando um grupo para os botões radio
         
         primeiraOpcao = new JRadioButton(); //Criando um botão estilo radio
+        primeiraOpcao.setSelected(true);
         janela.add(primeiraOpcao);  //Adicionando o botão de radio a janela
         primeiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
         primeiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
@@ -114,8 +104,18 @@ public class JanelaPrincipal extends JFrame{
         escolhaOrdem.add(terceiraOpcao);    //Adicionando os botões ao grupo de botões
     }
     
-public static void main(String args[]){
-    JanelaPrincipal p = new JanelaPrincipal();
-}
-
+    public void criaLista(DefaultListModel lista)
+    {
+        listaCarros = new JList(lista); //Criando uma lista
+        janela.add(listaCarros);    //Adicionando a lista no painel
+        listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
+        listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez
+        listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
+    }
+    
+    public void alteraLista(DefaultListModel lista)
+    {
+        System.out.print("Adiciona: " + lista + "\n");
+        listaCarros = new JList(lista);
+    }
 }

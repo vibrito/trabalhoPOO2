@@ -17,23 +17,27 @@ import javax.swing.JList;
  */
 public class Cars 
 {
-    /**
-     * @param args the command line arguments
-     */
+    private DefaultListModel lista;
+    private static JanelaPrincipal p;    
+    
     public static void main(String[] args) 
     {
-        // TODO code application logic here
-            JanelaPrincipal p = new JanelaPrincipal();
+        Cars carros = new Cars(); 
+        p = new JanelaPrincipal();
+        
+        carros.criaLista();
             
             p.adicionarCarro.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                       System.out.print("Adiciona carro\n");
+                      carros.adicionaItemLista();
                   }
-             });
+             }); 
             
             p.removerCarro.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
-                      System.out.print("Remover carro\n");
+                      System.out.print("Remove carro\n");
+                      carros.removeItemLista();
                   }
             });
             
@@ -42,5 +46,46 @@ public class Cars
                       System.out.print("Busca\n");
                   }
             });
+            
+            p.primeiraOpcao.addActionListener(new ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                      System.out.print("Ordenar 1\n");
+                  }
+            });
+            
+            p.segundaOpcao.addActionListener(new ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                      System.out.print("Ordenar 2\n");
+                  }
+            });
+            
+            p.terceiraOpcao.addActionListener(new ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                      System.out.print("Ordenar 3\n");
+                  }
+            });
     }
+    
+    private void criaLista()
+    {
+        lista = new DefaultListModel();
+        lista.addElement("Kombi");
+        lista.addElement("Fusca");
+        lista.addElement("Chevette");
+        lista.addElement("Brasilia");
+        p.criaLista(lista);
+    }
+    
+    private void adicionaItemLista()
+    {
+        lista.addElement("Gol");
+        p.alteraLista(lista);
+    }
+    
+    private void removeItemLista()
+    {
+        lista.remove(0);
+        p.alteraLista(lista);
+    }
+
 }
