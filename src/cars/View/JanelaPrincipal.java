@@ -3,6 +3,7 @@ package cars.View;
 import java.awt.Color;
 import java.awt.Container;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,15 +19,15 @@ public class JanelaPrincipal extends JFrame{
     
     private JPanel janela;
     private JLabel logo;
-    private JButton botaoBusca;
+    public JButton botaoBusca;
     private JTextField caixaBusca;
-    private JList listaCarros;
-    private JButton adicionarCarro;
-    private JButton removerCarro;
-    private ButtonGroup escolhaOrdem;
-    private JRadioButton primeiraOpcao;
-    private JRadioButton segundaOpcao;
-    private JRadioButton terceiraOpcao;
+    public JList listaCarros;
+    public JButton adicionarCarro;
+    public JButton removerCarro;
+    public ButtonGroup escolhaOrdem;
+    public JRadioButton primeiraOpcao;
+    public JRadioButton segundaOpcao;
+    public JRadioButton terceiraOpcao;
     
     public JanelaPrincipal(){
         Container p = getContentPane(); //Nomeando o painel
@@ -59,6 +60,11 @@ public class JanelaPrincipal extends JFrame{
         caixaBusca.setBounds(460, 50, 290, 40); //Definindo a posição e o tamanho da caixa de texto
         
         listaCarros = new JList();  //Criando uma lista
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addElement("Fusca");
+        listModel.addElement("Kombi");
+        listModel.addElement("Brasilia");
+        listaCarros = new JList(listModel);
         janela.add(listaCarros);    //Adicionando a lista no painel
         listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
         listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez

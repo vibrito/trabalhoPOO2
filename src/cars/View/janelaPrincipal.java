@@ -3,6 +3,7 @@ package cars.View;
 import java.awt.Color;
 import java.awt.Container;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,25 +11,25 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextPane;
+import javax.swing.JTextField;
 
 
 
-public class janelaPrincipal extends JFrame{
+public class JanelaPrincipal extends JFrame{
     
     private JPanel janela;
     private JLabel logo;
-    private JButton botaoBusca;
-    private JTextPane caixaBusca;
-    private JList listaCarros;
-    private JButton adicionarCarro;
-    private JButton removerCarro;
-    private ButtonGroup escolhaOrdem;
-    private JRadioButton primeiraOpcao;
-    private JRadioButton segundaOpcao;
-    private JRadioButton terceiraOpcao;
+    public JButton botaoBusca;
+    private JTextField caixaBusca;
+    public JList listaCarros;
+    public JButton adicionarCarro;
+    public JButton removerCarro;
+    public ButtonGroup escolhaOrdem;
+    public JRadioButton primeiraOpcao;
+    public JRadioButton segundaOpcao;
+    public JRadioButton terceiraOpcao;
     
-    public janelaPrincipal(){
+    public JanelaPrincipal(){
         Container p = getContentPane(); //Nomeando o painel
         setSize(900, 600);  //Definindo o tamanho da janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Configurando para encerrar o processo quando fechar a janela
@@ -52,13 +53,18 @@ public class janelaPrincipal extends JFrame{
         janela.add(botaoBusca); //Adicionando o botão no painel
         botaoBusca.setBounds(770, 40, 64, 64);  //Definindo a posição do botão e o tamanho dele
         
-        caixaBusca = new JTextPane();   //Criando uma caixa de texto
+        caixaBusca = new JTextField();   //Criando uma caixa de texto
         janela.add(caixaBusca); //Adicionando a caixa de texto no painel
         caixaBusca.setFont(new java.awt.Font("Tahoma", 0, 18)); //Editando a fonte caixa de texto
         caixaBusca.setText("Campo de busca");   //Definindo um texto padrão para a caixa de texto
         caixaBusca.setBounds(460, 50, 290, 40); //Definindo a posição e o tamanho da caixa de texto
         
         listaCarros = new JList();  //Criando uma lista
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.addElement("Fusca");
+        listModel.addElement("Kombi");
+        listModel.addElement("Brasilia");
+        listaCarros = new JList(listModel);
         janela.add(listaCarros);    //Adicionando a lista no painel
         listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
         listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez
@@ -82,6 +88,7 @@ public class janelaPrincipal extends JFrame{
         primeiraOpcao = new JRadioButton(); //Criando um botão estilo radio
         janela.add(primeiraOpcao);  //Adicionando o botão de radio a janela
         primeiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
+        primeiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
         primeiraOpcao.setText("Ordernar por modelo");   //Renomeando o botão de radio
         primeiraOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         primeiraOpcao.setBounds(150, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
@@ -89,6 +96,7 @@ public class janelaPrincipal extends JFrame{
         segundaOpcao = new JRadioButton(); //Criando um botão estilo radio
         janela.add(segundaOpcao);  //Adicionando o botão de radio a janela
         segundaOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
+        segundaOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
         segundaOpcao.setText("Ordernar por ano");   //Renomeando o botão de radio
         segundaOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         segundaOpcao.setBounds(350, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
@@ -96,6 +104,7 @@ public class janelaPrincipal extends JFrame{
         terceiraOpcao = new JRadioButton(); //Criando um botão estilo radio
         janela.add(terceiraOpcao);  //Adicionando o botão de radio a janela
         terceiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
+        terceiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
         terceiraOpcao.setText("Ordernar por placa");   //Renomeando o botão de radio
         terceiraOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         terceiraOpcao.setBounds(550, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
@@ -106,7 +115,7 @@ public class janelaPrincipal extends JFrame{
     }
     
 public static void main(String args[]){
-    janelaPrincipal p = new janelaPrincipal();
+    JanelaPrincipal p = new JanelaPrincipal();
 }
 
 }
