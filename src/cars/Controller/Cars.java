@@ -81,10 +81,10 @@ public class Cars
     {
         listaVeiculos = new ArrayList<Car>();
         LocalDate today = LocalDate.now();
-        Car carro1 = new Car("Gol", "Volkswagen", 2012, today, 120.00);
-        Car carro2 = new Car("Fusca", "Volkswagen", 1967, today, 1120.00);
-        Car carro3 = new Car("Chevette", "Chevrolet", 1992, today, 520.00);
-        Car carro4 = new Car("Uno", "FIAT", 2001, today, 120.00);
+        Car carro1 = new Car("Gol", "Volkswagen", 2012, today, 120.00, 18000.00);
+        Car carro2 = new Car("Fusca", "Volkswagen", 1967, today, 1120.00, 22000.00);
+        Car carro3 = new Car("Chevette", "Chevrolet", 1992, today, 520.00, 16000.00);
+        Car carro4 = new Car("Uno", "FIAT", 2001, today, 120.00, 14000.00);
         listaVeiculos.add(carro1);
         listaVeiculos.add(carro2);
         listaVeiculos.add(carro3);
@@ -132,7 +132,7 @@ public class Cars
     private void adicionaItemLista()
     {
         LocalDate today = LocalDate.now();
-        Car carro5 = new Car("Escort", "Ford", 1996, today, 120.00);
+        Car carro5 = new Car("Escort", "Ford", 1996, today, 120.00, 16000.00);
         lista.addElement(carro5.toString());
         listaVeiculos.add(carro5);
         p.alteraLista(lista);

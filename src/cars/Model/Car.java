@@ -1,4 +1,3 @@
-
 package cars.Model;
 
 import java.time.LocalDate;
@@ -8,19 +7,19 @@ public class Car
 {
     private static int numAux = 0;
     private int num;
-    private String modelo;
-    private String marca;
+    private String modelo, marca;
     private int ano;
     private LocalDate dataRegistro;
-    private double kmRodados;
-    
-    public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados){
+    private double kmRodados, preco;
+
+    public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco){
     this.num = numAux++;
     this.modelo = modelo;
     this.marca = marca;
     this.ano = ano;
     this.dataRegistro = dataRegistro;
     this.kmRodados = kmRodados;
+    this.preco = preco;
     }
 
     public static int getNumAux() {
@@ -74,11 +73,18 @@ public class Car
     public void setKmRodados(double kmRodados) {
         this.kmRodados = kmRodados;
     }
-    
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
     @Override
     public String toString(){
-        return String.format("Número de registro: %d\nModelo: %s\nMarca: %s\nAno: %d\nKilometros rodados: %.2f\nData de Registro: %s\n", num, modelo, marca, ano, kmRodados, dataRegistro);
+        return String.format("Modelo: %s\nAno: %d\nPreço: %d\n", modelo, ano, preco );
 
     }
-    
 }
