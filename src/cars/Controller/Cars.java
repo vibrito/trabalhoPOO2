@@ -26,7 +26,7 @@ public class Cars
     
     public enum Ordenacao 
     {
-        NOME, ANO, KM
+        NOME, ANO, PRECO
     }
     
     public static void main(String[] args) 
@@ -72,7 +72,7 @@ public class Cars
             p.terceiraOpcao.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     System.out.print("Ordenar 3\n");
-                    carros.ordenaLista(Ordenacao.KM);
+                    carros.ordenaLista(Ordenacao.PRECO);
                   }
             });
     }
@@ -102,11 +102,11 @@ public class Cars
                 break;
                     
             case ANO:
-                listaVeiculos.sort((o1, o2) -> o1.getAno() - (o2.getAno()));
+                listaVeiculos.sort((o1, o2) -> o1.getAno() - o2.getAno());
                 break;
                          
-            case KM:
-                listaVeiculos.sort((o1, o2) -> o1.getMarca().compareTo(o2.getMarca()));
+            case PRECO:
+                listaVeiculos.sort((o1, o2) -> Double.compare(o1.getPreco(), o2.getPreco()));
                 break;
                         
             default:
