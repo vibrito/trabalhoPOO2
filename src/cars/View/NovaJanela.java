@@ -5,6 +5,7 @@ import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -122,6 +123,10 @@ public class NovaJanela extends JFrame{
         nova.add(kmRodadosCampo);
         kmRodadosCampo.setFont(new java.awt.Font("Tahoma", 0, 18));
         kmRodadosCampo.setBounds(30, 435, 330, 30);
+    }
+    
+    public void exibirAlerta(String mensagemErro){
+        JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);
     }
     
 public static void main(String args[]){

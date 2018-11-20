@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -117,5 +118,9 @@ public class JanelaPrincipal extends JFrame{
     {
         System.out.print("Adiciona: " + lista + "\n");
         listaCarros = new JList(lista);
+    }
+    
+    public void exibirAlerta(String mensagemErro){
+        JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);
     }
 }
