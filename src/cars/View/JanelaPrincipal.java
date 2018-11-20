@@ -19,10 +19,10 @@ import javax.swing.JTextField;
 public class JanelaPrincipal extends JFrame{
     
     private JPanel janela;
-    private JLabel logo;
+    public JLabel logo;
     public JButton botaoBusca;
-    private JTextField caixaBusca;
-    private JList listaCarros;
+    public JTextField caixaBusca;
+    public JList listaCarros;
     public JButton adicionarCarro;
     public JButton removerCarro;
     public ButtonGroup escolhaOrdem;
@@ -96,7 +96,7 @@ public class JanelaPrincipal extends JFrame{
         janela.add(terceiraOpcao);  //Adicionando o botão de radio a janela
         terceiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
         terceiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
-        terceiraOpcao.setText("Ordernar por placa");   //Renomeando o botão de radio
+        terceiraOpcao.setText("Ordernar por preço");   //Renomeando o botão de radio
         terceiraOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         terceiraOpcao.setBounds(550, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
         
