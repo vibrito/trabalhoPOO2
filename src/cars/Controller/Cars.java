@@ -7,11 +7,13 @@ package cars.Controller;
 
 import cars.Model.Car;
 import cars.View.JanelaPrincipal;
+import cars.View.NovaJanela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JList;
 
 /**
@@ -23,7 +25,7 @@ public class Cars
     private DefaultListModel lista;
     private ArrayList<Car> listaVeiculos;
     private static JanelaPrincipal p;   
-    
+    private static NovaJanela novaJanela;
     public enum Ordenacao 
     {
         NOME, ANO, PRECO
@@ -32,7 +34,10 @@ public class Cars
     public static void main(String[] args) 
     {
         Cars carros = new Cars(); 
-        p = new JanelaPrincipal();        
+        p = new JanelaPrincipal();
+        novaJanela = new NovaJanela();
+        novaJanela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        novaJanela.setVisible(false);        
         carros.criaArrayList();
             
             p.adicionarCarro.addActionListener(new ActionListener() {
@@ -52,6 +57,7 @@ public class Cars
             p.botaoBusca.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                       System.out.print("Busca\n");
+                      carros.mostraAlerta();
                   }
             });
             
@@ -131,17 +137,24 @@ public class Cars
     
     private void adicionaItemLista()
     {
-        LocalDate today = LocalDate.now();
-        Car carro5 = new Car("Escort", "Ford", 1996, today, 120.00, 16000.00);
-        lista.addElement(carro5.toString());
-        listaVeiculos.add(carro5);
-        p.alteraLista(lista);
-    }
+//        LocalDate today = LocalDate.now();
+//        Car carro5 = new Car("Escort", "Ford", 1996, today, 120.00, 16000.00);
+//        lista.addElement(carro5.toString());
+//        listaVeiculos.add(carro5);
+//        p.alteraLista(lista);
+
+        novaJanela.setVisible(true);
+     }
     
     private void removeItemLista()
     {
         lista.remove(0);
         listaVeiculos.remove(0);
         p.alteraLista(lista);
+    }
+    
+    private void mostraAlerta()
+    {
+        p.exibirAlerta("Deu ruim");
     }
 }
