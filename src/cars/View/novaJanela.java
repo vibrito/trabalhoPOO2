@@ -122,7 +122,6 @@ public class NovaJanela extends JFrame{
         nova.add(kmRodadosCampo);
         kmRodadosCampo.setFont(new java.awt.Font("Tahoma", 0, 18));
         kmRodadosCampo.setBounds(30, 435, 330, 30);
-        
     }
     
 public static void main(String args[]){

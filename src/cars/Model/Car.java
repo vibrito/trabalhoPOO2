@@ -16,7 +16,7 @@ public class Car
     
     public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados){
     this.num = numAux++;
-    this. modelo = modelo;
+    this.modelo = modelo;
     this.marca = marca;
     this.ano = ano;
     this.dataRegistro = dataRegistro;
