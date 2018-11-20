@@ -32,7 +32,7 @@ public class Cars
                       System.out.print("Adiciona carro\n");
                       carros.adicionaItemLista();
                   }
-             }); 
+            });
             
             p.removerCarro.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
@@ -87,5 +87,4 @@ public class Cars
         lista.remove(0);
         p.alteraLista(lista);
     }
-
 }
