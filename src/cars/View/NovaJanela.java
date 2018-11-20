@@ -114,7 +114,7 @@ public class NovaJanela extends JFrame{
         marcaCampo.setBounds(30, 190, 330, 30);
         
         try{
-        kmMascara = new MaskFormatter("#,###.##");
+        kmMascara = new MaskFormatter("###,###.##");
         anoMascara = new MaskFormatter("####");
         anoMascara.setPlaceholderCharacter('_');
         telMascara = new MaskFormatter("(###)#####-####");
