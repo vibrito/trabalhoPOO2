@@ -84,6 +84,6 @@ public class Car
 
     @Override
     public String toString(){
-        return String.format("Modelo: %s\nAno: %d\nPreço: %f\n", modelo, ano, preco );
+        return String.format("Modelo: %s\nAno: %d\nPreço: %.2f\n", modelo, ano, preco );
     }
 }

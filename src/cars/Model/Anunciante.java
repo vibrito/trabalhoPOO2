@@ -4,6 +4,11 @@ public class Anunciante {
 
     private String nomeAnunciante;
     private String telefoneAnunciante;
+    
+    public Anunciante(String nomeAnunciante, String telefoneAnunciante){
+    this.nomeAnunciante = nomeAnunciante;
+    this.telefoneAnunciante = telefoneAnunciante;
+    }
 
     public String getNomeAnunciante() {
         return nomeAnunciante;
