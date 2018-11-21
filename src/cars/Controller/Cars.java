@@ -122,7 +122,6 @@ public class Cars
                 }
             }
             
-            
             ordenaLista(Ordenacao.NOME);        
         }
         finally
