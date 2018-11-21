@@ -10,8 +10,14 @@ import cars.View.JanelaPrincipal;
 import cars.View.NovaJanela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -37,8 +43,16 @@ public class Cars
         p = new JanelaPrincipal();
         novaJanela = new NovaJanela();
         novaJanela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        novaJanela.setVisible(false);        
-        carros.criaArrayList();
+        novaJanela.setVisible(false);
+        
+        try 
+        {
+            carros.criaArrayList();
+        } 
+        catch (IOException ex)
+        {
+            Logger.getLogger(Cars.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
             p.adicionarCarro.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
@@ -83,21 +97,39 @@ public class Cars
             });
     }
     
-    private void criaArrayList()
+    private void criaArrayList() throws IOException
     {
         listaVeiculos = new ArrayList<Car>();
         LocalDate today = LocalDate.now();
-        Car carro1 = new Car("Gol", "Volkswagen", 2012, today, 120.00, 18000.00);
-        Car carro2 = new Car("Fusca", "Volkswagen", 1967, today, 1120.00, 22000.00);
-        Car carro3 = new Car("Chevette", "Chevrolet", 1992, today, 520.00, 16000.00);
-        Car carro4 = new Car("Uno", "FIAT", 2001, today, 120.00, 14000.00);
-        listaVeiculos.add(carro1);
-        listaVeiculos.add(carro2);
-        listaVeiculos.add(carro3);
-        listaVeiculos.add(carro4);
-        System.out.print(listaVeiculos);
-        ordenaLista(Ordenacao.NOME);
-    }
+        
+        BufferedReader br = new BufferedReader(new FileReader("Lista.txt"));
+        try 
+        {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null)
+            {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                if (line != null)
+                {
+                    String[] stringArray = line.split(":");
+                    Car carro = new Car(stringArray[0], stringArray[1], Integer.parseInt(stringArray[2]), today, Double.parseDouble(stringArray[4]), Double.parseDouble(stringArray[5]));
+                    listaVeiculos.add(carro);
+                    System.out.print(carro);
+                }
+            }
+            
+            
+            ordenaLista(Ordenacao.NOME);        
+        }
+        finally
+        {
+            br.close();
+        }        
+     }
     
     private void ordenaLista(Ordenacao ordem)
     {
@@ -137,14 +169,8 @@ public class Cars
     
     private void adicionaItemLista()
     {
-//        LocalDate today = LocalDate.now();
-//        Car carro5 = new Car("Escort", "Ford", 1996, today, 120.00, 16000.00);
-//        lista.addElement(carro5.toString());
-//        listaVeiculos.add(carro5);
-//        p.alteraLista(lista);
-
         novaJanela.setVisible(true);
-     }
+    }
     
     private void removeItemLista()
     {
