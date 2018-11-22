@@ -112,14 +112,14 @@ public class NovaJanela extends JFrame{
         marcaCampo.setFont(new java.awt.Font("Tahoma", 0, 18));
         marcaCampo.setBounds(30, 190, 330, 30);
         
-        try{
-        kmMascara = new MaskFormatter("#,###.##");
-        anoMascara = new MaskFormatter("####");
-        anoMascara.setPlaceholderCharacter('_');
-        telMascara = new MaskFormatter("(###)#####-####");
-        telMascara.setPlaceholderCharacter('_');
-        }catch(ParseException excp) {
-             }
+//        try{
+//        kmMascara = new MaskFormatter("#,###.##");
+//        anoMascara = new MaskFormatter("####");
+//        anoMascara.setPlaceholderCharacter('_');
+//        telMascara = new MaskFormatter("(###)#####-####");
+//        telMascara.setPlaceholderCharacter('_');
+//        }catch(ParseException excp) {
+//             }
         
         kmRodados = new JLabel();
         nova.add(kmRodados);

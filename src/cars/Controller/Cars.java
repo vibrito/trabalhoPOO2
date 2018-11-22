@@ -11,8 +11,10 @@ import cars.View.NovaJanela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -210,5 +212,29 @@ public class Cars
        listaVeiculos.add(carro);
        lista.addElement(carro.toString());
        janelaPrincipal.alteraLista(lista);
+
+        BufferedWriter writer = null;
+        try 
+        {
+            writer = new BufferedWriter(new FileWriter("Lista.txt", true));
+            writer.write("Fusca:VW:1899:today:20.00:37000.00");
+
+        } 
+        catch (IOException e) 
+        {
+        } 
+        finally 
+        {
+            try
+            {
+                if (writer != null) 
+                {
+                    writer.close();
+                }
+            } 
+            catch (IOException e)
+            {
+            }
+        }
     }
 }
