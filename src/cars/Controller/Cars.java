@@ -201,11 +201,14 @@ public class Cars
     {
        LocalDate today = LocalDate.now();
        //public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco){
-       System.out.print(novaJanela.ano.getText());
-       System.out.print(novaJanela.kmRodados.getText());
-//       Car carro = new Car(novaJanela.modelo.getText(), novaJanela.marca.getText(), 1967, today, Double.parseDouble(novaJanela.kmRodados.getText()), 22000.00);
-//       listaVeiculos.add(carro);
-//       lista.addElement(carro.toString());
-//       janelaPrincipal.alteraLista(lista);
+//       System.out.print(novaJanela.modeloCampo.getText());
+//       System.out.print(novaJanela.marcaCampo.getText());
+//       System.out.print(novaJanela.anoCampo.getText());
+//       System.out.print(novaJanela.kmRodadosCampo.getText());
+       
+       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), 22000.00);
+       listaVeiculos.add(carro);
+       lista.addElement(carro.toString());
+       janelaPrincipal.alteraLista(lista);
     }
 }
