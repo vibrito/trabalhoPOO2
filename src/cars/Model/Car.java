@@ -86,4 +86,8 @@ public class Car
     public String toString(){
         return String.format("Modelo: %s\nAno: %d\nPreço: %.2f\n", modelo, ano, preco );
     }
+    
+    //TODO:
+    //Recebe: Car carro
+    //Retorna: "Corolla:Toyota:2016:today:20.00:37000.00" <- Lógico que atualizado pra refletir as alterações com o anunciante.
 }
