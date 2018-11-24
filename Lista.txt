@@ -4,4 +4,4 @@ Siena:FIAT:2014:today:214.00:22000.00
 Celta:General Motors:2008:today:505.00:12300.00
 Sandero:Renault:2015:today:87.00:24500.00
 Fiesta:Ford:2009:today:134.00:20000.00
-Corolla:Toyota:2016:today:20.00:37000.00
+Corolla:Toyota:2016:today:20.00:37000.00Fusca:VW:1899:today:20.00:37000.00Fusca:VW:1899:today:20.00:37000.00

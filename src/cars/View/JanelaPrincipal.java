@@ -36,6 +36,7 @@ public class JanelaPrincipal extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Configurando para encerrar o processo quando fechar a janela
         setResizable(false);    //Definindo para o usuario não modificar o tamanho da janela
         setVisible(true);   //Deixando a janela visivel
+        setTitle("UVA's Classificados de Carros"); //Titulo da janela
         
         janela = new JPanel();  //Criando o painel
         p.add(janela);  //Adicionando o painel na janela
@@ -121,6 +122,6 @@ public class JanelaPrincipal extends JFrame{
     }
     
     public void exibirAlerta(String mensagemErro){
-        JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);   //Tela de mensagem de erro para o usuário
     }
 }
