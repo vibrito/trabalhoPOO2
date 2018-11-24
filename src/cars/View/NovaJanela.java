@@ -45,6 +45,7 @@ public class NovaJanela extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Configurando para encerrar o processo quando fechar a janela
         setResizable(false);    //Definindo para o usuario não modificar o tamanho da janela
         setVisible(true);   //Deixando a janela visivel
+        setTitle("Carro");  //Titulo da janela
         
         nova = new JPanel();    //Criando um novo painel
         n.add(nova);    //Adicionando o painel na janela
