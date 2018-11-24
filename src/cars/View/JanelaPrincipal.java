@@ -81,7 +81,7 @@ public class JanelaPrincipal extends JFrame{
         janela.add(primeiraOpcao);  //Adicionando o botão de radio a janela
         primeiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
         primeiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
-        primeiraOpcao.setText("Ordernar por modelo");   //Renomeando o botão de radio
+        primeiraOpcao.setText("Ordernar por ano");   //Renomeando o botão de radio
         primeiraOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         primeiraOpcao.setBounds(150, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
         
@@ -89,7 +89,7 @@ public class JanelaPrincipal extends JFrame{
         janela.add(segundaOpcao);  //Adicionando o botão de radio a janela
         segundaOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
         segundaOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
-        segundaOpcao.setText("Ordernar por ano");   //Renomeando o botão de radio
+        segundaOpcao.setText("Ordernar por preço");   //Renomeando o botão de radio
         segundaOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         segundaOpcao.setBounds(350, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
         
@@ -97,7 +97,7 @@ public class JanelaPrincipal extends JFrame{
         janela.add(terceiraOpcao);  //Adicionando o botão de radio a janela
         terceiraOpcao.setFont(new java.awt.Font("Tahoma", 0, 18));  //Modificando a fonte do botão radio
         terceiraOpcao.setForeground(new java.awt.Color(255, 255, 255)); //Modificando a cor da fonte
-        terceiraOpcao.setText("Ordernar por preço");   //Renomeando o botão de radio
+        terceiraOpcao.setText("Ordernar por modelo");   //Renomeando o botão de radio
         terceiraOpcao.setContentAreaFilled(false);  //Fazendo o botão se incorporar com o plano de fundo
         terceiraOpcao.setBounds(550, 500, 200, 40);   //Definindo a posição e o tamanho do botão de radio
         
