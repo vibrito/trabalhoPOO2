@@ -30,7 +30,7 @@ public class NovaJanela extends JFrame{
     public JTextField registroCampo;
     public JTextField modeloCampo;
     public JTextField marcaCampo;
-    public JFormattedTextField kmRodadosCampo;
+    public JTextField kmRodadosCampo;
     public JFormattedTextField anoCampo;
     public JTextField precoCampo;
     public JTextField nomeAnuncianteCampo;
@@ -115,14 +115,13 @@ public class NovaJanela extends JFrame{
         marcaCampo.setFont(new java.awt.Font("Tahoma", 0, 18));  //Alterando a fonte do campo de texto
         marcaCampo.setBounds(30, 190, 330, 30);   //Definindo a posição e o tamanho da caixa de texto
         
-//        try{
-//        kmMascara = new MaskFormatter("#,###.##");
-//        anoMascara = new MaskFormatter("####");
-//        anoMascara.setPlaceholderCharacter('_');
-//        telMascara = new MaskFormatter("(###)#####-####");
-//        telMascara.setPlaceholderCharacter('_');
-//        }catch(ParseException excp) {
-//             }
+        try{    //Configuraçoes da mascara
+        anoMascara = new MaskFormatter("####");
+        anoMascara.setPlaceholderCharacter('_');
+        telMascara = new MaskFormatter("(###)#####-####");
+        telMascara.setPlaceholderCharacter('_');
+        }catch(ParseException excp) {
+             }
         
         kmRodados = new JLabel();    //Adicionando um rotulo
         nova.add(kmRodados);     //Inserindo o rotulo no painel
@@ -131,7 +130,7 @@ public class NovaJanela extends JFrame{
         kmRodados.setText("Km Rodados:");  //Nomeando o rotulo
         kmRodados.setBounds(30, 230, 160, 30);    //Definindo a posição e o tamanho do rotulo
         
-        kmRodadosCampo = new JFormattedTextField(kmMascara);   //Adicionando um campo de texto
+        kmRodadosCampo = new JTextField();   //Adicionando um campo de texto
         nova.add(kmRodadosCampo);    //Inserindo o campo de texto no painel
         kmRodadosCampo.setFont(new java.awt.Font("Tahoma", 0, 18));  //Alterando a fonte do campo de texto
         kmRodadosCampo.setBounds(30, 260, 160, 30);   //Definindo a posição e o tamanho da caixa de texto
