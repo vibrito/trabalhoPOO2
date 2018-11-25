@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -48,6 +49,12 @@ public class Cars
         novaJanela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         novaJanela.setVisible(false);
         
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                carros.save();
+            }
+        });
+
         try 
         {
             carros.criaArrayList();
@@ -111,6 +118,32 @@ public class Cars
                     carros.adicionaItemLista();
                   }
             });
+    }
+    
+    private void save()
+    {       
+        BufferedWriter writer = null;
+        
+        try {
+
+            FileWriter cleaner = new FileWriter("Lista.txt");
+            cleaner.write("");
+            cleaner.flush();
+            cleaner.close();
+            writer = new BufferedWriter(new FileWriter("Lista.txt", true));
+            for (Car temp : listaVeiculos) {
+                writer.write(temp.getModelo() + ":" + temp.getMarca() + ":" + temp.getAno() + ":" + "today" + ":" + Double.toString(temp.getKmRodados()) + ":" + "20.00:37000.00\n");
+            }
+
+        } catch (IOException e) {
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+            }
+        }
     }
     
     private void criaArrayList() throws IOException
@@ -202,39 +235,11 @@ public class Cars
     private void adicionaItemLista()
     {
        LocalDate today = LocalDate.now();
-       //public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco){
-//       System.out.print(novaJanela.modeloCampo.getText());
-//       System.out.print(novaJanela.marcaCampo.getText());
-//       System.out.print(novaJanela.anoCampo.getText());
-//       System.out.print(novaJanela.kmRodadosCampo.getText());
+       System.out.print(today);
        
        Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), 22000.00);
        listaVeiculos.add(carro);
        lista.addElement(carro.toString());
        janelaPrincipal.alteraLista(lista);
-
-        BufferedWriter writer = null;
-        try 
-        {
-            writer = new BufferedWriter(new FileWriter("Lista.txt", true));
-            writer.write("Fusca:VW:1899:today:20.00:37000.00");
-
-        } 
-        catch (IOException e) 
-        {
-        } 
-        finally 
-        {
-            try
-            {
-                if (writer != null) 
-                {
-                    writer.close();
-                }
-            } 
-            catch (IOException e)
-            {
-            }
-        }
     }
 }
