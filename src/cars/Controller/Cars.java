@@ -35,6 +35,7 @@ public class Cars
 {
     private DefaultListModel lista;
     private ArrayList<Car> listaVeiculos;
+    private ArrayList<Car> listaBusca;
     private static JanelaPrincipal janelaPrincipal;
     private static NovaJanela novaJanela;
     public enum Ordenacao 
@@ -56,7 +57,7 @@ public class Cars
                 carros.save();
             }
         });
-
+        
         try 
         {
             carros.criaArrayList();
@@ -83,7 +84,7 @@ public class Cars
             janelaPrincipal.botaoBusca.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                       System.out.print("Busca\n");
-                      carros.mostraAlerta();
+                      carros.busca();
                   }
             });
             
@@ -121,25 +122,26 @@ public class Cars
                   }
             });
             
-//            janelaPrincipal.listaCarros.addListSelectionListener(new ListSelectionListener() 
-//            {
-//                @Override
-//                public void valueChanged(ListSelectionEvent event) {
-//                    if (!event.getValueIsAdjusting()) {
-//                        JList source = (JList) event.getSource();
-//                        String selected = source.getSelectedValue().toString();
-//                        System.out.print(selected);
-//                    }
-//                }
-//            });
+            janelaPrincipal.listaCarros.addListSelectionListener(new ListSelectionListener() 
+            {
+                @Override
+                public void valueChanged(ListSelectionEvent event) {
+                    if (!event.getValueIsAdjusting()) {
+                        JList source = (JList) event.getSource();
+                        String selected = source.getSelectedValue().toString();
+                        System.out.print(selected);
+                    }
+                }
+            });
     }
     
     private void save()
     {       
+        System.out.print("Salvando\n");
+        
         BufferedWriter writer = null;
         
         try {
-
             FileWriter cleaner = new FileWriter("Lista.txt");
             cleaner.write("");
             cleaner.flush();
@@ -158,6 +160,35 @@ public class Cars
             } catch (IOException e) {
             }
         }
+    }
+    
+    private void busca()
+    {
+        listaBusca = new ArrayList<Car>();
+                
+        for(Car c : listaVeiculos)
+        {
+            if (c.getModelo() != null && c.getModelo().contains(janelaPrincipal.caixaBusca.getText())) 
+            {
+                listaBusca.add(c);
+            }
+        }
+        
+        if (listaBusca.isEmpty())
+        {
+            janelaPrincipal.exibirAlerta("A busca não trouxe resultados");
+            limparBusca();
+        }
+        else
+        {
+           criaLista(listaBusca);
+        }
+    }
+    
+    private void limparBusca()
+    {
+        janelaPrincipal.caixaBusca.setText("");
+        criaLista(listaVeiculos);
     }
     
     private void criaArrayList() throws IOException
