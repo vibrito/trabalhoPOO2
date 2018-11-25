@@ -191,15 +191,15 @@ public class NovaJanela extends JFrame{
     }
     
     public void limparCampos(){     //Limpa os campos apos uma nova janela
-    dataRegistroCampo.setText(null);
-    registroCampo.setText(null);
-    modeloCampo.setText(null);
-    marcaCampo.setText(null);
-    kmRodadosCampo.setText(null);
-    anoCampo.setText(null);
-    precoCampo.setText(null);
-    nomeAnuncianteCampo.setText(null);
-    telAnuncianteCampo.setText(null);
+    dataRegistroCampo.setText("");
+    registroCampo.setText("");
+    modeloCampo.setText("");
+    marcaCampo.setText("");
+    kmRodadosCampo.setText("");
+    anoCampo.setText("");
+    precoCampo.setText("");
+    nomeAnuncianteCampo.setText("");
+    telAnuncianteCampo.setText("");
     }
     
 }
