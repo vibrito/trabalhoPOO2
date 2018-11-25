@@ -11,8 +11,9 @@ public class Car
     private int ano;
     private LocalDate dataRegistro;
     private double kmRodados, preco;
+    Anunciante anunciante;
 
-    public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco){
+    public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco, Anunciante anunciante){
     this.num = numAux++;
     this.modelo = modelo;
     this.marca = marca;
@@ -20,6 +21,7 @@ public class Car
     this.dataRegistro = dataRegistro;
     this.kmRodados = kmRodados;
     this.preco = preco;
+    this.anunciante = anunciante;
     }
 
     public static int getNumAux() {
@@ -85,6 +87,11 @@ public class Car
     @Override
     public String toString(){
         return String.format("Modelo: %s\nAno: %d\nPreço: %.2f\n", modelo, ano, preco );
+                
+    }
+    
+    public String retornaString(Car carro){
+        return String.format("Modelo: %s\tMarca: %s\tAno: %d\tData de Registro: %d\tKms rodados: %.2f\tPreço: %.2f\t", modelo, marca, ano, dataRegistro, kmRodados, preco);
     }
     
     //TODO:

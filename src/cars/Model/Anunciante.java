@@ -10,6 +10,8 @@ public class Anunciante {
     this.telefoneAnunciante = telefoneAnunciante;
     }
 
+
+
     public String getNomeAnunciante() {
         return nomeAnunciante;
     }
