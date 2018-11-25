@@ -190,7 +190,16 @@ public class NovaJanela extends JFrame{
         JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);   //Definindo janela de mensagem de erro
     }
     
-public static void main(String args[]){
-    NovaJanela n = new NovaJanela();
-}
+    public void limparCampos(){     //Limpa os campos apos uma nova janela
+    dataRegistroCampo.setText(null);
+    registroCampo.setText(null);
+    modeloCampo.setText(null);
+    marcaCampo.setText(null);
+    kmRodadosCampo.setText(null);
+    anoCampo.setText(null);
+    precoCampo.setText(null);
+    nomeAnuncianteCampo.setText(null);
+    telAnuncianteCampo.setText(null);
+    }
+    
 }
