@@ -24,6 +24,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import java.time.format.DateTimeFormatter;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -88,21 +90,21 @@ public class Cars
             janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                       System.out.print("Ordenar 1\n");
-                      carros.ordenaLista(Ordenacao.NOME);
+                      carros.ordenaLista(Ordenacao.ANO);
                   }
             });
             
             janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                       System.out.print("Ordenar 2\n");
-                      carros.ordenaLista(Ordenacao.ANO);
+                      carros.ordenaLista(Ordenacao.PRECO);
                   }
             });
             
             janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     System.out.print("Ordenar 3\n");
-                    carros.ordenaLista(Ordenacao.PRECO);
+                    carros.ordenaLista(Ordenacao.NOME);
                   }
             });
             
@@ -118,6 +120,18 @@ public class Cars
                     carros.adicionaItemLista();
                   }
             });
+            
+//            janelaPrincipal.listaCarros.addListSelectionListener(new ListSelectionListener() 
+//            {
+//                @Override
+//                public void valueChanged(ListSelectionEvent event) {
+//                    if (!event.getValueIsAdjusting()) {
+//                        JList source = (JList) event.getSource();
+//                        String selected = source.getSelectedValue().toString();
+//                        System.out.print(selected);
+//                    }
+//                }
+//            });
     }
     
     private void save()
@@ -132,7 +146,7 @@ public class Cars
             cleaner.close();
             writer = new BufferedWriter(new FileWriter("Lista.txt", true));
             for (Car temp : listaVeiculos) {
-                writer.write(temp.getModelo() + ":" + temp.getMarca() + ":" + temp.getAno() + ":" + "today" + ":" + Double.toString(temp.getKmRodados()) + ":" + "20.00:37000.00\n");
+                writer.write(temp.getModelo() + ":" + temp.getMarca() + ":" + temp.getAno() + ":" + "today" + ":" + Double.toString(temp.getKmRodados()) + ":" + Double.toString(temp.getPreco()) + "\n");
             }
 
         } catch (IOException e) {
@@ -155,23 +169,16 @@ public class Cars
         try 
         {
             StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-
-            while (line != null)
-            {
-                sb.append(line);
-                sb.append(System.lineSeparator());
-                line = br.readLine();
-                if (line != null)
-                {
-                    String[] stringArray = line.split(":");
+            
+            String line = null;
+            while ((line = br.readLine()) != null) {
+		                    String[] stringArray = line.split(":");
                     Car carro = new Car(stringArray[0], stringArray[1], Integer.parseInt(stringArray[2]), today, Double.parseDouble(stringArray[4]), Double.parseDouble(stringArray[5]));
                     listaVeiculos.add(carro);
                     System.out.print(carro);
-                }
             }
-            
-            ordenaLista(Ordenacao.NOME);        
+
+            ordenaLista(Ordenacao.ANO);      
         }
         finally
         {
@@ -237,7 +244,7 @@ public class Cars
        LocalDate today = LocalDate.now();
        System.out.print(today);
        
-       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), 22000.00);
+       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()));
        listaVeiculos.add(carro);
        lista.addElement(carro.toString());
        janelaPrincipal.alteraLista(lista);

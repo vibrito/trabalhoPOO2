@@ -1,9 +1,10 @@
-Celta:General Motors:2008:today:505.0:20.00:37000.00
-Corolla:Toyota:2016:today:20.0:20.00:37000.00
-F1000:Ford:2000:today:1000.0:20.00:37000.00
-Fiesta:Ford:2009:today:134.0:20.00:37000.00
-Fox:Volskwagen:2010:today:485.0:20.00:37000.00
-Fusca:VW:1899:today:20.0:20.00:37000.00
-Sandero:Renault:2015:today:87.0:20.00:37000.00
-Siena:FIAT:2014:today:214.0:20.00:37000.00
-911:Porsche:1982:today:1000.0:20.00:37000.00
+KA:Ford:2001:today:14000.0:14000.0
+Belina:Chevrolet:1978:today:100000.0:7000.0
+911:Porsche:1982:today:1000.0:18000.0
+F1000:Ford:2000:today:1000.0:40000.0
+Celta:General Motors:2008:today:505.0:25000.0
+Fiesta:Ford:2009:today:134.0:10000.0
+Fox:Volskwagen:2010:today:485.0:10000.0
+Siena:FIAT:2014:today:214.0:8000.0
+Sandero:Renault:2015:today:87.0:12000.0
+Corolla:Toyota:2016:today:20.0:20000.0
