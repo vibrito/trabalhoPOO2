@@ -11,9 +11,10 @@ public class Car
     private int ano;
     private LocalDate dataRegistro;
     private double kmRodados, preco;
-    Anunciante anunciante;
+    private Anunciante anunciante = new Anunciante();
 
     public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco, Anunciante anunciante){
+
     this.num = numAux++;
     this.modelo = modelo;
     this.marca = marca;
@@ -83,6 +84,15 @@ public class Car
     public void setPreco(double preco) {
         this.preco = preco;
     }
+    
+    public Anunciante getAnunciante() {
+        return anunciante;
+    }
+
+    public void setAnunciante(Anunciante anunciante) {
+        this.anunciante = anunciante;
+    }
+
 
     @Override
     public String toString(){
@@ -91,10 +101,10 @@ public class Car
     }
     
     public String retornaString(Car carro){
-        return String.format("Modelo: %s\tMarca: %s\tAno: %d\tData de Registro: %d\tKms rodados: %.2f\tPreço: %.2f\t", modelo, marca, ano, dataRegistro, kmRodados, preco);
+        return String.format("%s:%s:%d:%d:%.2f:%.2f:%s:%s\n", modelo, marca, ano, dataRegistro, kmRodados, preco, getAnunciante().getNomeAnunciante(), getAnunciante().getTelefoneAnunciante() );
     }
     
-    //TODO:
+}//TODO:
     //Recebe: Car carro
     //Retorna: "Corolla:Toyota:2016:today:20.00:37000.00" <- Lógico que atualizado pra refletir as alterações com o anunciante.
-}
+

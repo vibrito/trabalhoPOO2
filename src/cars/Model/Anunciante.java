@@ -5,9 +5,14 @@ public class Anunciante {
     private String nomeAnunciante;
     private String telefoneAnunciante;
     
-    public Anunciante(String nomeAnunciante, String telefoneAnunciante){
+    public Anunciante(){
+    
+    }
+    
+    public Anunciante(String nomeAnunciante, String telefoneAnunciante) {
     this.nomeAnunciante = nomeAnunciante;
     this.telefoneAnunciante = telefoneAnunciante;
+
     }
 
 
