@@ -1,5 +1,6 @@
 package cars.View;
 
+import cars.Model.Car;
 import java.awt.Color;
 import java.awt.Container;
 import java.text.ParseException;
@@ -202,4 +203,33 @@ public class NovaJanela extends JFrame{
     telAnuncianteCampo.setText("");
     }
     
+    public void carregarCampos(Car temp){      //Carregar os campos com os dados e tornar os campos não editaveis
+    dataRegistroCampo.setText(String.valueOf(temp.getDataRegistro()));
+    registroCampo.setText(String.valueOf(temp.getNum()));
+    modeloCampo.setText(temp.getModelo());
+    marcaCampo.setText(temp.getMarca());
+    kmRodadosCampo.setText(String.valueOf(temp.getKmRodados()));
+    anoCampo.setText(String.valueOf(temp.getAno()));
+    precoCampo.setText(String.valueOf(temp.getPreco()));
+    nomeAnuncianteCampo.setText(temp.getAnunciante().getNomeAnunciante());
+    telAnuncianteCampo.setText(temp.getAnunciante().getTelefoneAnunciante());
+    
+    modeloCampo.setEditable(false);
+    marcaCampo.setEditable(false);
+    kmRodadosCampo.setEditable(false);
+    anoCampo.setEditable(false);
+    precoCampo.setEditable(false);
+    nomeAnuncianteCampo.setEditable(false);
+    telAnuncianteCampo.setEditable(false);
+    }
+    
+    public void editarCampos(){     //Tornar os campos editaveis
+    modeloCampo.setEditable(true);
+    marcaCampo.setEditable(true);
+    kmRodadosCampo.setEditable(true);
+    anoCampo.setEditable(true);
+    precoCampo.setEditable(true);
+    nomeAnuncianteCampo.setEditable(true);
+    telAnuncianteCampo.setEditable(true);
+    }
 }
