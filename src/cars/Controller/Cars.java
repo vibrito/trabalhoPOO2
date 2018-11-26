@@ -5,6 +5,7 @@
  */
 package cars.Controller;
 
+import cars.Model.Anunciante;
 import cars.Model.Car;
 import cars.View.JanelaPrincipal;
 import cars.View.NovaJanela;
@@ -148,7 +149,7 @@ public class Cars
             cleaner.close();
             writer = new BufferedWriter(new FileWriter("Lista.txt", true));
             for (Car temp : listaVeiculos) {
-                writer.write(temp.getModelo() + ":" + temp.getMarca() + ":" + temp.getAno() + ":" + "today" + ":" + Double.toString(temp.getKmRodados()) + ":" + Double.toString(temp.getPreco()) + "\n");
+                writer.write(temp.getModelo() + ":" + temp.getMarca() + ":" + temp.getAno() + ":" + "today" + ":" + Double.toString(temp.getKmRodados()) + ":" + Double.toString(temp.getPreco()) + ":" + temp.getAnunciante().getNomeAnunciante() + ":" + temp.getAnunciante().getTelefoneAnunciante() + "\n");
             }
 
         } catch (IOException e) {
@@ -203,10 +204,11 @@ public class Cars
             
             String line = null;
             while ((line = br.readLine()) != null) {
-		                    String[] stringArray = line.split(":");
-                    Car carro = new Car(stringArray[0], stringArray[1], Integer.parseInt(stringArray[2]), today, Double.parseDouble(stringArray[4]), Double.parseDouble(stringArray[5]));
-                    listaVeiculos.add(carro);
-                    System.out.print(carro);
+                String[] stringArray = line.split(":");
+                Anunciante anum = new Anunciante(stringArray[6], stringArray[7]);
+                Car carro = new Car(stringArray[0], stringArray[1], Integer.parseInt(stringArray[2]), today, Double.parseDouble(stringArray[4]), Double.parseDouble(stringArray[5]), anum);
+                listaVeiculos.add(carro);
+                System.out.print(carro);
             }
 
             ordenaLista(Ordenacao.ANO);      
@@ -274,10 +276,12 @@ public class Cars
     {
        LocalDate today = LocalDate.now();
        System.out.print(today);
-       
-       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()));
+       Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
+       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()), anum);
        listaVeiculos.add(carro);
        lista.addElement(carro.toString());
        janelaPrincipal.alteraLista(lista);
+       novaJanela.setVisible(false);
+       novaJanela.limparCampos();
     }
 }

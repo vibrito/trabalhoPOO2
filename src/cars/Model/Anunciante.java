@@ -24,7 +24,7 @@ public class Anunciante {
         return telefoneAnunciante;
     }
 
-    public void setTelefoneAnunciante(String telefoneAnunciante) {
+        public void setTelefoneAnunciante(String telefoneAnunciante) {
         this.telefoneAnunciante = telefoneAnunciante;
     }
 }

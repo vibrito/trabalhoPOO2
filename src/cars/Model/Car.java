@@ -83,18 +83,22 @@ public class Car
     public void setPreco(double preco) {
         this.preco = preco;
     }
+    
+    public Anunciante getAnunciante() {
+        return anunciante;
+    }
+    
+    public void setAnunciante(Anunciante anunciante) {
+        this.anunciante = anunciante;
+    }
 
     @Override
     public String toString(){
-        return String.format("Modelo: %s\nAno: %d\nPreço: %.2f\n", modelo, ano, preco );
-                
-    }
+        return String.format("Modelo: %s\tAno: %d\tPreço: %.2f", modelo, ano, preco );
+    }//Isso vai ser exibido na lista
     
     public String retornaString(Car carro){
         return String.format("Modelo: %s\tMarca: %s\tAno: %d\tData de Registro: %d\tKms rodados: %.2f\tPreço: %.2f\t", modelo, marca, ano, dataRegistro, kmRodados, preco);
-    }
-    
-    //TODO:
-    //Recebe: Car carro
-    //Retorna: "Corolla:Toyota:2016:today:20.00:37000.00" <- Lógico que atualizado pra refletir as alterações com o anunciante.
+    }//Isso vai ser salvo no TXT!!!!
+    //Retorna: "Corolla:Toyota:2016:today:20.00:37000.00:Zé:(021)99999999" <-------------------
 }
