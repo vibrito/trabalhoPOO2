@@ -3,13 +3,13 @@ package cars.Model;
 import java.time.LocalDate;
 
 
-public class Car 
+public class Car
 {
     private static int numAux = 0;
     private int num;
     private String modelo, marca;
     private int ano;
-    private LocalDate dataRegistro;
+    private LocalDate dataRegistro = LocalDate.now();
     private double kmRodados, preco;
     private Anunciante anunciante = new Anunciante();
 
@@ -96,11 +96,11 @@ public class Car
     @Override
     public String toString(){
         return String.format("Modelo: %s\tAno: %d\tPreço: %.2f", modelo, ano, preco );
-    }//Isso vai ser exibido na lista
+    }   //Isso vai ser exibido na lista
     
     public String retornaString(Car carro){
-        return String.format("%s:%s:%d:%d:%.2f:%.2f:%s:%s\n", modelo, marca, ano, dataRegistro, kmRodados, preco, getAnunciante().getNomeAnunciante(), getAnunciante().getTelefoneAnunciante() );
-        //Então, você recebe o objeto carro e não usa ele. tem que ser carro.modelo, carro.marca, etc...
+        return String.format("%s:%s:%d:%d:%.2f:%.2f:%s:%s\n", carro.modelo, carro.marca, carro.ano, carro.dataRegistro, carro.kmRodados, carro.preco, carro.getAnunciante().getNomeAnunciante(), carro.getAnunciante().getTelefoneAnunciante() );
         //Exemplo de retorno Diablo:Lamborghini:1991:25/11/2018:10000.0:500000.0:Vinicius:(021)99999-0909
+        //Get do get :)
     }   
 }
