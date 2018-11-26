@@ -1,12 +1,12 @@
-Belina:Chevrolet:1978:today:100000.0:7000.0:João:(021)99999-0909
 911:Porsche:1982:today:1000.0:18000.0:João:(021)99999-0909
-Fusca:VW:2000:today:1000.0:10000.0:João:(021)99999-0909
-F1000:Ford:2000:today:1000.0:40000.0:João:(021)99999-0909
-KA:Ford:2001:today:14000.0:14000.0:João:(021)99999-0909
+Belina:Chevrolet:1978:today:100000.0:7000.0:João:(021)99999-0909
 Celta:General Motors:2008:today:505.0:25000.0:João:(021)99999-0909
-Fiesta:Ford:2009:today:134.0:10000.0:João:(021)99999-0909
-Fox:Volskwagen:2010:today:485.0:10000.0:João:(021)99999-0909
-Siena:FIAT:2014:today:214.0:8000.0:João:(021)99999-0909
-Sandero:Renault:2015:today:87.0:12000.0:João:(021)99999-0909
 Corolla:Toyota:2016:today:20.0:20000.0:João:(021)99999-0909
 Diablo:Lamborghini:1991:today:10000.0:500000.0:Vinicius:(021)99999-0909
+F1000:Ford:2000:today:1000.0:40000.0:João:(021)99999-0909
+Fiesta:Ford:2009:today:134.0:10000.0:João:(021)99999-0909
+Fox:Volskwagen:2010:today:485.0:10000.0:João:(021)99999-0909
+Fusca:VW:2000:today:1000.0:10000.0:João:(021)99999-0909
+KA:Ford:2001:today:14000.0:14000.0:João:(021)99999-0909
+Sandero:Renault:2015:today:87.0:12000.0:João:(021)99999-0909
+Siena:FIAT:2014:today:214.0:8000.0:João:(021)99999-0909

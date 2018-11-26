@@ -101,6 +101,6 @@ public class Car
     public String retornaString(Car carro){
         return String.format("%s:%s:%d:%d:%.2f:%.2f:%s:%s\n", modelo, marca, ano, dataRegistro, kmRodados, preco, getAnunciante().getNomeAnunciante(), getAnunciante().getTelefoneAnunciante() );
         //Então, você recebe o objeto carro e não usa ele. tem que ser carro.modelo, carro.marca, etc...
-        //Exemplo de retorno Diablo:Lamborghini:1991:today:10000.0:500000.0:Vinicius:(021)99999-0909
+        //Exemplo de retorno Diablo:Lamborghini:1991:25/11/2018:10000.0:500000.0:Vinicius:(021)99999-0909
     }   
 }
