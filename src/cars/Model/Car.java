@@ -11,9 +11,10 @@ public class Car
     private int ano;
     private LocalDate dataRegistro;
     private double kmRodados, preco;
-    Anunciante anunciante;
+    private Anunciante anunciante = new Anunciante();
 
     public Car(String modelo, String marca, int ano, LocalDate dataRegistro, double kmRodados, double preco, Anunciante anunciante){
+
     this.num = numAux++;
     this.modelo = modelo;
     this.marca = marca;
@@ -98,7 +99,8 @@ public class Car
     }//Isso vai ser exibido na lista
     
     public String retornaString(Car carro){
-        return String.format("Modelo: %s\tMarca: %s\tAno: %d\tData de Registro: %d\tKms rodados: %.2f\tPreço: %.2f\t", modelo, marca, ano, dataRegistro, kmRodados, preco);
-    }//Isso vai ser salvo no TXT!!!!
-    //Retorna: "Corolla:Toyota:2016:today:20.00:37000.00:Zé:(021)99999999" <-------------------
+        return String.format("%s:%s:%d:%d:%.2f:%.2f:%s:%s\n", modelo, marca, ano, dataRegistro, kmRodados, preco, getAnunciante().getNomeAnunciante(), getAnunciante().getTelefoneAnunciante() );
+        //Então, você recebe o objeto carro e não usa ele. tem que ser carro.modelo, carro.marca, etc...
+        //Exemplo de retorno Diablo:Lamborghini:1991:today:10000.0:500000.0:Vinicius:(021)99999-0909
+    }   
 }
