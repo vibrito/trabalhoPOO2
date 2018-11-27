@@ -123,17 +123,13 @@ public class Cars
                   }
             });
             
-            janelaPrincipal.listaCarros.addListSelectionListener(new ListSelectionListener() 
-            {
-                @Override
-                public void valueChanged(ListSelectionEvent event) {
-                    if (!event.getValueIsAdjusting()) {
-                        JList source = (JList) event.getSource();
-                        String selected = source.getSelectedValue().toString();
-                        System.out.print(selected);
-                    }
-                }
-            });
+        janelaPrincipal.listaCarros.addListSelectionListener((ListSelectionEvent event) -> {
+            if (!event.getValueIsAdjusting()) {
+                JList source = (JList) event.getSource();
+                System.out.print(" - - - -- - >  " + source.getSelectedIndex() + "\n");
+                String selected = source.getSelectedValue().toString();
+            }
+        });
     }
     
     private void save()
