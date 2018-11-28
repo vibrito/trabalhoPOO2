@@ -318,7 +318,7 @@ public class Cars {
     }
     
     private void adicionaItemLista()
-    {
+    {        
         LocalDate today = LocalDate.now();
         System.out.print(today);
         Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
@@ -329,12 +329,16 @@ public class Cars {
         {
             if (listaBusca == null || listaBusca.isEmpty())
             {
+                Car carroAntigo = listaVeiculos.get(indexSelection);
+                carro.setNum(carroAntigo.getNum());
                 listaVeiculos.set(indexSelection, carro);
             }
             else
             {
                 for (int i = 0; i < listaVeiculos.size(); i++) {
                     if (listaVeiculos.get(i).getNum() == listaBusca.get(indexSelection).getNum()) {
+                        Car carroAntigo = listaVeiculos.get(i);
+                        carro.setNum(carroAntigo.getNum());
                         listaVeiculos.set(i, carro);
                         limparBusca();
                         break;
