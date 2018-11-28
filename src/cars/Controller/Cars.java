@@ -294,8 +294,7 @@ public class Cars
        Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
        Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()), anum);
        listaVeiculos.add(carro);
-       lista.addElement(carro.toString());
-       janelaPrincipal.alteraLista(lista);
+       criaLista(listaVeiculos);
        novaJanela.setVisible(false);
        novaJanela.limparCampos();
     }

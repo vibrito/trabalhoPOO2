@@ -124,11 +124,6 @@ public class JanelaPrincipal extends JFrame{
         listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
     }
     
-    public void alteraLista(DefaultListModel lista)
-    {
-        listaCarros = new JList(lista);
-    }
-    
     public void exibirAlerta(String mensagemErro){
         JOptionPane.showMessageDialog(null, mensagemErro, "Oops", JOptionPane.ERROR_MESSAGE);   //Tela de mensagem de erro para o usuário
     }
