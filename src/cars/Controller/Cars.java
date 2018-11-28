@@ -9,8 +9,11 @@ import cars.Model.Anunciante;
 import cars.Model.Car;
 import cars.View.JanelaPrincipal;
 import cars.View.NovaJanela;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -32,101 +35,109 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author viniciusbrito
  */
-public class Cars 
-{
+public class Cars {
+
     private DefaultListModel lista;
     private ArrayList<Car> listaVeiculos;
     private ArrayList<Car> listaBusca;
     private static JanelaPrincipal janelaPrincipal;
     private static NovaJanela novaJanela;
     private int indexSelection;
-    
-    public enum Ordenacao 
-    {
+
+    public enum Ordenacao {
         NOME, ANO, PRECO
     }
-    
-    public static void main(String[] args) 
-    {
-        Cars carros = new Cars(); 
+
+    public static void main(String[] args) {
+        Cars carros = new Cars();
         janelaPrincipal = new JanelaPrincipal();
-        
+
         novaJanela = new NovaJanela();
         novaJanela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         novaJanela.setVisible(false);
-        
+
         carros.indexSelection = -1;
-        
+
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 carros.save();
             }
         });
-        
-        try 
-        {
+
+        try {
             carros.criaArrayList();
-        } 
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(Cars.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            janelaPrincipal.adicionarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Adiciona carro\n");
-                      carros.chamaTelaDetalhes();
-                  }
-            });
-            
-            janelaPrincipal.removerCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Remove carro\n");
-                      carros.removeItemLista();
-                  }
-            });
-            
-            janelaPrincipal.botaoBusca.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Busca\n");
-                      carros.busca();
-                  }
-            });
-            
-            janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Ordenar 1\n");
-                      carros.ordenaLista(Ordenacao.ANO);
-                  }
-            });
-            
-            janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Ordenar 2\n");
-                      carros.ordenaLista(Ordenacao.PRECO);
-                  }
-            });
-            
-            janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Ordenar 3\n");
-                    carros.ordenaLista(Ordenacao.NOME);
-                  }
-            });
-            
-            novaJanela.editarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Editar Carro");
-                  }
-            });
-            
-            novaJanela.confirmarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Adicionar Carro");
-                    carros.adicionaItemLista();
-                  }
-            });
-            
+
+        janelaPrincipal.adicionarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Adiciona carro\n");
+                novaJanela.limparCampos();
+                carros.chamaTelaDetalhes();
+            }
+        });
+
+        janelaPrincipal.removerCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Remove carro\n");
+                carros.removeItemLista();
+            }
+        });
+
+        janelaPrincipal.botaoBusca.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Busca\n");
+                carros.busca();
+            }
+        });
+
+        janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 1\n");
+                carros.ordenaLista(Ordenacao.ANO);
+            }
+        });
+
+        janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 2\n");
+                carros.ordenaLista(Ordenacao.PRECO);
+            }
+        });
+
+        janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 3\n");
+                carros.ordenaLista(Ordenacao.NOME);
+            }
+        });
+
+        novaJanela.editarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Editar Carro");
+            }
+        });
+
+        novaJanela.confirmarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Adicionar Carro");
+                carros.adicionaItemLista();
+            }
+        });
+
+        janelaPrincipal.listaCarros.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+
+                JList source = (JList) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                if (mouseEvent.getClickCount() == 2 && source.getSelectedIndex() != -1) {
+                    carros.indexSelection = source.getSelectedIndex();
+                    carros.chamaEditar();
+                }
+            }
+        });
+
         janelaPrincipal.listaCarros.addListSelectionListener((ListSelectionEvent event) -> {
             if (!event.getValueIsAdjusting()) {
                 JList source = (JList) event.getSource();
@@ -187,6 +198,7 @@ public class Cars
     
     private void limparBusca()
     {
+        listaBusca = new ArrayList<Car>();
         janelaPrincipal.caixaBusca.setText("");
         criaLista(listaVeiculos);
     }
@@ -285,6 +297,20 @@ public class Cars
     private void chamaTelaDetalhes()
     {
         novaJanela.setVisible(true);
+    }
+    
+    private void chamaEditar()
+    {
+       if (listaBusca == null || listaBusca.isEmpty())
+       {
+            chamaTelaDetalhes();
+            novaJanela.carregarCampos(listaVeiculos.get(indexSelection));
+       }
+       else
+       {
+            chamaTelaDetalhes();
+            novaJanela.carregarCampos(listaBusca.get(indexSelection));
+       }
     }
     
     private void adicionaItemLista()
