@@ -106,7 +106,7 @@ public class JanelaPrincipal extends JFrame{
         escolhaOrdem.add(terceiraOpcao);    //Adicionando os botões ao grupo de botões
     }
     
-    public void criaLista(DefaultListModel lista)
+    public void criaListaEAdiciona(DefaultListModel lista)
     {
         listaCarros = new JList(lista); //Criando uma lista
         janela.add(listaCarros);    //Adicionando a lista no painel
@@ -115,9 +115,17 @@ public class JanelaPrincipal extends JFrame{
         listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
     }
     
+    public void criaLista(DefaultListModel lista)
+    {        
+        listaCarros = new JList(lista); //Criando uma lista
+        //janela.add(listaCarros);    //Adicionando a lista no painel
+        listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
+        listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez
+        listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
+    }
+    
     public void alteraLista(DefaultListModel lista)
     {
-        System.out.print("Adiciona: " + lista + "\n");
         listaCarros = new JList(lista);
     }
     

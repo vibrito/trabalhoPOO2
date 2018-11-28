@@ -39,95 +39,92 @@ public class Cars
     private ArrayList<Car> listaBusca;
     private static JanelaPrincipal janelaPrincipal;
     private static NovaJanela novaJanela;
+    private int indexSelection;
+    
     public enum Ordenacao 
     {
         NOME, ANO, PRECO
     }
     
-    public static void main(String[] args) 
-    {
-        Cars carros = new Cars(); 
+    public static void main(String[] args) {
+        Cars carros = new Cars();
         janelaPrincipal = new JanelaPrincipal();
-        
+
         novaJanela = new NovaJanela();
         novaJanela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         novaJanela.setVisible(false);
-        
+
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 carros.save();
             }
         });
-        
-        try 
-        {
+
+        try {
             carros.criaArrayList();
-        } 
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(Cars.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            janelaPrincipal.adicionarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Adiciona carro\n");
-                      carros.chamaTelaDetalhes();
-                  }
-            });
-            
-            janelaPrincipal.removerCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Remove carro\n");
-                      carros.removeItemLista();
-                  }
-            });
-            
-            janelaPrincipal.botaoBusca.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Busca\n");
-                      carros.busca();
-                  }
-            });
-            
-            janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Ordenar 1\n");
-                      carros.ordenaLista(Ordenacao.ANO);
-                  }
-            });
-            
-            janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                      System.out.print("Ordenar 2\n");
-                      carros.ordenaLista(Ordenacao.PRECO);
-                  }
-            });
-            
-            janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Ordenar 3\n");
-                    carros.ordenaLista(Ordenacao.NOME);
-                  }
-            });
-            
-            novaJanela.editarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Editar Carro");
-                  }
-            });
-            
-            novaJanela.confirmarCarro.addActionListener(new ActionListener() {
-                  public void actionPerformed(ActionEvent e) {
-                    System.out.print("Adicionar Carro");
-                    carros.adicionaItemLista();
-                  }
-            });
-            
+
+        janelaPrincipal.adicionarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Adiciona carro\n");
+                carros.chamaTelaDetalhes();
+            }
+        });
+
+        janelaPrincipal.removerCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Remove carro\n");
+                carros.removeItemLista();
+            }
+        });
+
+        janelaPrincipal.botaoBusca.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Busca\n");
+                carros.busca();
+            }
+        });
+
+        janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 1\n");
+                carros.ordenaLista(Ordenacao.ANO);
+            }
+        });
+
+        janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 2\n");
+                carros.ordenaLista(Ordenacao.PRECO);
+            }
+        });
+
+        janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Ordenar 3\n");
+                carros.ordenaLista(Ordenacao.NOME);
+            }
+        });
+
+        novaJanela.editarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Editar Carro");
+            }
+        });
+
+        novaJanela.confirmarCarro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Adicionar Carro");
+                carros.adicionaItemLista();
+            }
+        });
+
         janelaPrincipal.listaCarros.addListSelectionListener((ListSelectionEvent event) -> {
             if (!event.getValueIsAdjusting()) {
                 JList source = (JList) event.getSource();
-                System.out.print(" - - - -- - >  " + source.getSelectedIndex() + "\n");
-                String selected = source.getSelectedValue().toString();
+                carros.indexSelection = source.getSelectedIndex();
             }
         });
     }
@@ -204,10 +201,15 @@ public class Cars
                 Anunciante anum = new Anunciante(stringArray[6], stringArray[7]);
                 Car carro = new Car(stringArray[0], stringArray[1], Integer.parseInt(stringArray[2]), today, Double.parseDouble(stringArray[4]), Double.parseDouble(stringArray[5]), anum);
                 listaVeiculos.add(carro);
-                System.out.print(carro);
+            }
+            
+            listaVeiculos.sort((o1, o2) -> o1.getModelo().compareTo(o2.getModelo()));
+            lista = new DefaultListModel();
+            for (Car c : listaVeiculos) {
+                lista.addElement(c.toString());
             }
 
-            ordenaLista(Ordenacao.ANO);      
+            janelaPrincipal.criaListaEAdiciona(lista);
         }
         finally
         {
@@ -216,7 +218,7 @@ public class Cars
      }
     
     private void ordenaLista(Ordenacao ordem)
-    {
+    {        
          switch (ordem) 
          {
             case NOME:
@@ -236,13 +238,13 @@ public class Cars
                 break;
         }
         
-        System.out.print(listaVeiculos);
         criaLista(listaVeiculos);
     }
     
     private void criaLista(ArrayList<Car> listaV)
-    {
-        lista = new DefaultListModel();
+    {                
+        lista.removeAllElements();
+
         for(Car c : listaV)
         {
             lista.addElement(c.toString());
@@ -253,14 +255,21 @@ public class Cars
         
     private void removeItemLista()
     {
-        lista.remove(0);
-        listaVeiculos.remove(0);
-        janelaPrincipal.alteraLista(lista);
+        if (indexSelection >= 0)
+        {
+            listaVeiculos.remove(indexSelection);
+            criaLista(listaVeiculos);
+            System.out.print(indexSelection);
+        }
+        else
+        {
+            mostraAlerta("Selecione um item");
+        }
     }
     
-    private void mostraAlerta()
+    private void mostraAlerta(String msg)
     {
-        janelaPrincipal.exibirAlerta("Deu ruim");
+        janelaPrincipal.exibirAlerta(msg);
     }
     
     private void chamaTelaDetalhes()

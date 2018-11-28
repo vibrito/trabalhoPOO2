@@ -15,8 +15,6 @@ public class Anunciante {
 
     }
 
-
-
     public String getNomeAnunciante() {
         return nomeAnunciante;
     }
