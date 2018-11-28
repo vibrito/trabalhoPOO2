@@ -204,6 +204,18 @@ public class NovaJanela extends JFrame{
     telAnuncianteCampo.setText("");
     }
     
+    public void criarCarroBotao(Car temp){
+    dataRegistroCampo.setText(String.valueOf(temp.getDataRegistro()));
+    registroCampo.setText(String.valueOf(temp.getNum()));
+    modeloCampo.setEditable(true);
+    marcaCampo.setEditable(true);
+    kmRodadosCampo.setEditable(true);
+    anoCampo.setEditable(true);
+    precoCampo.setEditable(true);
+    nomeAnuncianteCampo.setEditable(true);
+    telAnuncianteCampo.setEditable(true);
+    }
+    
     public void carregarCampos(Car temp){      //Carregar os campos com os dados e tornar os campos não editaveis
     dataRegistroCampo.setText(String.valueOf(temp.getDataRegistro()));
     registroCampo.setText(String.valueOf(temp.getNum()));
