@@ -74,6 +74,7 @@ public class Cars {
             public void actionPerformed(ActionEvent e) {
                 System.out.print("Adiciona carro\n");
                 novaJanela.limparCampos();
+                novaJanela.isEditing = false;
                 carros.chamaTelaDetalhes();
             }
         });
@@ -116,6 +117,7 @@ public class Cars {
         novaJanela.editarCarro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.print("Editar Carro");
+                novaJanela.editarCampos();
             }
         });
 
@@ -311,17 +313,42 @@ public class Cars {
             chamaTelaDetalhes();
             novaJanela.carregarCampos(listaBusca.get(indexSelection));
        }
+       
+       novaJanela.isEditing = true;
     }
     
     private void adicionaItemLista()
     {
-       LocalDate today = LocalDate.now();
-       System.out.print(today);
-       Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
-       Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()), today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()), anum);
-       listaVeiculos.add(carro);
-       criaLista(listaVeiculos);
-       novaJanela.setVisible(false);
-       novaJanela.limparCampos();
+        LocalDate today = LocalDate.now();
+        System.out.print(today);
+        Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
+        Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()),
+                today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()), anum);
+        
+        if (novaJanela.isEditing == true && indexSelection != -1) 
+        {
+            if (listaBusca == null || listaBusca.isEmpty())
+            {
+                listaVeiculos.set(indexSelection, carro);
+            }
+            else
+            {
+                for (int i = 0; i < listaVeiculos.size(); i++) {
+                    if (listaVeiculos.get(i).getNum() == listaBusca.get(indexSelection).getNum()) {
+                        listaVeiculos.set(i, carro);
+                        limparBusca();
+                        break;
+                    }
+                }
+            }
+        } 
+        else 
+        {
+            listaVeiculos.add(carro);
+        }
+        
+        criaLista(listaVeiculos);
+        novaJanela.setVisible(false);
+        novaJanela.limparCampos();
     }
 }

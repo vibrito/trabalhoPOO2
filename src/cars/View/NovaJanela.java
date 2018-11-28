@@ -39,6 +39,7 @@ public class NovaJanela extends JFrame{
     public MaskFormatter kmMascara = null;
     public MaskFormatter anoMascara = null;
     public MaskFormatter telMascara = null;
+    public Boolean isEditing = false;
     
     public NovaJanela(){
         Container n = getContentPane(); //Nomeando a janela
