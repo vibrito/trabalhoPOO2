@@ -117,11 +117,7 @@ public class JanelaPrincipal extends JFrame{
     
     public void criaLista(DefaultListModel lista)
     {        
-        listaCarros = new JList(lista); //Criando uma lista
-        //janela.add(listaCarros);    //Adicionando a lista no painel
-        listaCarros.setFont(new java.awt.Font("Tahoma", 0, 18));    // Editando a fonte da lista
-        listaCarros.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);  //Tornando a lista selecionar uma por vez
-        listaCarros.setBounds(90, 150, 620, 330);   //Definindo a posição e o tamanho da lista
+        listaCarros = new JList(lista); //alterando a lista
     }
     
     public void exibirAlerta(String mensagemErro){
