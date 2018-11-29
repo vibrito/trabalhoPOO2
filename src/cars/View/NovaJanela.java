@@ -204,7 +204,7 @@ public class NovaJanela extends JFrame{
     telAnuncianteCampo.setText("");
     }
     
-    public void criarCarroBotao(Car temp){
+    public void criarCarroBotao(Car temp){      //Personaliza o jeito que é a criação de um novo carro
     dataRegistroCampo.setText(String.valueOf(temp.getDataRegistro()));
     registroCampo.setText(String.valueOf(temp.getNum()));
     modeloCampo.setEditable(true);

@@ -72,7 +72,7 @@ public class Cars {
 
         janelaPrincipal.adicionarCarro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Adiciona carro\n");
+                System.out.print("Adiciona um carro\n");
                 novaJanela.limparCampos();
                 novaJanela.isEditing = false;
                 carros.chamaTelaDetalhes();
@@ -95,35 +95,35 @@ public class Cars {
 
         janelaPrincipal.primeiraOpcao.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Ordenar 1\n");
+                System.out.print("Ordenar por ano\n");
                 carros.ordenaLista(Ordenacao.ANO);
             }
         });
 
         janelaPrincipal.segundaOpcao.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Ordenar 2\n");
+                System.out.print("Ordenar por preço\n");
                 carros.ordenaLista(Ordenacao.PRECO);
             }
         });
 
         janelaPrincipal.terceiraOpcao.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Ordenar 3\n");
+                System.out.print("Ordenar por modelo\n");
                 carros.ordenaLista(Ordenacao.NOME);
             }
         });
 
         novaJanela.editarCarro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Editar Carro");
+                System.out.print("Editar Carro\n");
                 novaJanela.editarCampos();
             }
         });
 
         novaJanela.confirmarCarro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Adicionar Carro");
+                System.out.print("Confirma o Carro\n");
                 carros.adicionaItemLista();
             }
         });
@@ -320,7 +320,7 @@ public class Cars {
     private void adicionaItemLista()
     {        
         LocalDate today = LocalDate.now();
-        System.out.print(today);
+        System.out.print(today+" Adicionado item a lista\n");
         Anunciante anum = new Anunciante(novaJanela.nomeAnuncianteCampo.getText(), novaJanela.telAnuncianteCampo.getText());
         Car carro = new Car(novaJanela.modeloCampo.getText(), novaJanela.marcaCampo.getText(), Integer.parseInt(novaJanela.anoCampo.getText()),
                 today, Double.parseDouble(novaJanela.kmRodadosCampo.getText()), Double.parseDouble(novaJanela.precoCampo.getText()), anum);

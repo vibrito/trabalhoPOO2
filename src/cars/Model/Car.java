@@ -95,7 +95,7 @@ public class Car
 
     @Override
     public String toString(){
-        return String.format("Modelo: %s\tAno: %d\tPreço: %.2f", modelo, ano, preco );
+        return String.format("Ano: %d  \t  Preço: %.2f  \t  Modelo: %s\n", ano, preco, modelo );
     }   //Isso vai ser exibido na lista
     
     public String retornaString(Car carro){
